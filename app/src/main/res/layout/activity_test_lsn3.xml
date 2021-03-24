@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.tenseenola.dnui.lsn3.CircleProgress
+        android:id="@+id/CircleProgress"
+        android:layout_width="match_parent"
+        app:isTextShow="true"
+        app:max="100"
+        app:progressBgColor="@color/purple_200"
+        app:progressColor="@color/colorPrimary"
+        app:textColor="@color/black"
+        app:progressWidth="100dp"
+        app:textSize="20sp"
+        android:layout_height="wrap_content">
+    </com.tenseenola.dnui.lsn3.CircleProgress>
+
+</LinearLayout>
