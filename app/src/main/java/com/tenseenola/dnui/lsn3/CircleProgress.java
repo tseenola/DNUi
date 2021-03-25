@@ -8,59 +8,68 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 import com.tenseenola.dnui.R;
 
 public class CircleProgress extends View {
-    private final Paint mRoundBackGroundPaint;
-    private final Paint mArcPaint;
-    private final Paint mTextPaint;
-    private   int mProgressMax;
+    private float radius;
+    private Paint mRoundBackGroundPaint;
+    private Paint mArcPaint;
+    private Paint mTextPaint;
+    private boolean mIsShowText;
+    private int mProgressMax;
     private int mCurProgress;
     public CircleProgress(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CircleProgress);
-        int mProgressColor = typedArray.getColor(R.styleable.CircleProgress_progressColor, Color.RED);
-        int mCircleBgColor = typedArray.getColor(R.styleable.CircleProgress_progressBgColor, Color.BLACK);
-        float mProgressWidth = typedArray.getDimension(R.styleable.CircleProgress_progressWidth, 55);
-        float mTextSize = typedArray.getDimension(R.styleable.CircleProgress_textSize, 16);
+        //圆环背景颜色
+        int mCircleBgColor = typedArray.getColor(R.styleable.CircleProgress_progressBgColor, Color.parseColor("#FFBB86FC"));
+        //圆环颜色
+        int mProgressColor = typedArray.getColor(R.styleable.CircleProgress_progressColor, Color.parseColor("#008577"));
+        //圆环的宽度
+        float mProgressWidth = typedArray.getDimension(R.styleable.CircleProgress_progressWidth, 25);
+        //中间文字大小
+        float mTextSize = typedArray.getDimension(R.styleable.CircleProgress_textSize, 28);
+        //文字颜色
         int mTextColor = typedArray.getColor(R.styleable.CircleProgress_textColor, Color.BLACK);
+        //最大进度值
         mProgressMax = typedArray.getInteger(R.styleable.CircleProgress_max, 100);
-        typedArray.getBoolean(R.styleable.CircleProgress_isTextShow,true);
-
+        //是否显示中间的文字
+        mIsShowText = typedArray.getBoolean(R.styleable.CircleProgress_isTextShow, true);
+        radius = typedArray.getDimension(R.styleable.CircleProgress_radius, 50);
+        //初始化圆环背景画笔
         mRoundBackGroundPaint = new Paint();
         mRoundBackGroundPaint.setColor(mCircleBgColor);
         mRoundBackGroundPaint.setAntiAlias(true);
         mRoundBackGroundPaint.setStyle(Paint.Style.STROKE);
-        mRoundBackGroundPaint.setStrokeWidth(100);
-
+        mRoundBackGroundPaint.setStrokeWidth(mProgressWidth);
+        //初始化圆弧画笔
         mArcPaint = new Paint();
         mArcPaint.setColor(mProgressColor);
         mArcPaint.setAntiAlias(true);
         mArcPaint.setStyle(Paint.Style.STROKE);
         mArcPaint.setStrokeCap(Paint.Cap.ROUND);
-        mArcPaint.setStrokeWidth(100);
-
+        mArcPaint.setStrokeWidth(mProgressWidth);
+        //初始化文字画笔
         mTextPaint  = new Paint();
         mTextPaint.setColor(mTextColor);
         mTextPaint.setStrokeWidth(0);
-        mTextPaint.setTextSize(30);
+        mTextPaint.setTextSize(mTextSize);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         //画背景圆环
-        float radius = 100f;
+        //float radius = 100f;
         float xCenter = getWidth()/2;
         float yCenter = getHeight()/2;
         canvas.drawCircle(xCenter,yCenter,radius,mRoundBackGroundPaint);
 
         //换圆弧
         RectF oval = new RectF(xCenter-radius,yCenter-radius,xCenter+radius,yCenter+radius);
-        canvas.drawArc(oval,0,360 * (mCurProgress/mProgressMax),false,mArcPaint);
+        canvas.drawArc(oval,0,360 * (mCurProgress/(float)mProgressMax),false,mArcPaint);
 
         //画中间文字
         int percent = (int) (mCurProgress/(float)mProgressMax * 100);

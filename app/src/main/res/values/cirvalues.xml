@@ -9,5 +9,6 @@
          <attr name="textColor" format="color"/>
          <attr name="max" format="integer"/>
          <attr name="isTextShow" format="boolean"/>
+         <attr name="radius" format="dimension"/>
      </declare-styleable>
 </resources>
