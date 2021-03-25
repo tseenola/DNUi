@@ -12,6 +12,9 @@ import android.view.View;
 
 import com.tenseenola.dnui.R;
 
+/**
+ * 圆形进度条
+ */
 public class CircleProgress extends View {
     private float radius;
     private Paint mRoundBackGroundPaint;
@@ -20,6 +23,31 @@ public class CircleProgress extends View {
     private boolean mIsShowText;
     private int mProgressMax;
     private int mCurProgress;
+
+    public Paint getRoundBackGroundPaint() {
+        return mRoundBackGroundPaint;
+    }
+
+    public void setRoundBackGroundPaint(Paint pRoundBackGroundPaint) {
+        mRoundBackGroundPaint = pRoundBackGroundPaint;
+    }
+
+    public Paint getArcPaint() {
+        return mArcPaint;
+    }
+
+    public void setArcPaint(Paint pArcPaint) {
+        mArcPaint = pArcPaint;
+    }
+
+    public Paint getTextPaint() {
+        return mTextPaint;
+    }
+
+    public void setTextPaint(Paint pTextPaint) {
+        mTextPaint = pTextPaint;
+    }
+
     public CircleProgress(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CircleProgress);
@@ -72,13 +100,20 @@ public class CircleProgress extends View {
         canvas.drawArc(oval,0,360 * (mCurProgress/(float)mProgressMax),false,mArcPaint);
 
         //画中间文字
+        if (!mIsShowText) {
+            return;
+        }
         int percent = (int) (mCurProgress/(float)mProgressMax * 100);
         String percentStr = String.valueOf(percent) + "%";
         Paint.FontMetrics fm = mTextPaint.getFontMetrics();
         //yCenter + (fm.bottom - fm.top)/2-fm.bottom 用于求 文字基线 baseline
         canvas.drawText(percentStr,xCenter - mTextPaint.measureText(percentStr)/2,yCenter + (fm.bottom - fm.top)/2-fm.bottom,mTextPaint);
     }
-    
+
+    /**
+     * 设置当前进度
+     * @param pProgress
+     */
     public void setProgress(int pProgress){
         if (pProgress<0){
             throw new IllegalArgumentException("进度Progress不能小于0");

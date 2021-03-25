@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
      <declare-styleable name="CircleProgress">
-        <!--进度条的颜色-->
+         <!--进度条的颜色-->
          <attr name="progressColor" format="color" />
+         <!--圆环背景颜色-->
          <attr name="progressBgColor" format="color"/>
+         <!--progress Stroke 宽度-->
          <attr name="progressWidth" format="dimension"/>
+         <!--文字大小-->
          <attr name="textSize" format="dimension"/>
+         <!--文字颜色-->
          <attr name="textColor" format="color"/>
+         <!--progress最大值-->
          <attr name="max" format="integer"/>
+         <!--是否显示文字-->
          <attr name="isTextShow" format="boolean"/>
+         <!--半径-->
          <attr name="radius" format="dimension"/>
+         <!--圆环开始画的起始角度按照钟表角度3点为0点开始算-->
+         <attr name="startAngle" format="integer"/>
      </declare-styleable>
 </resources>
