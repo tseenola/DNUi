@@ -17,6 +17,13 @@
             </intent-filter>-->
         </activity>
         <activity android:name=".lsn3.TestLsn3Activity">
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity>
+        <activity android:name=".lsn4.TestLsn4Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
