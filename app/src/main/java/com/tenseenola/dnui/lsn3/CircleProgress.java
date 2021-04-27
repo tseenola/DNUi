@@ -66,6 +66,7 @@ public class CircleProgress extends View {
         //是否显示中间的文字
         mIsShowText = typedArray.getBoolean(R.styleable.CircleProgress_isTextShow, true);
         radius = typedArray.getDimension(R.styleable.CircleProgress_radius, 50);
+        typedArray.recycle();
         //初始化圆环背景画笔
         mRoundBackGroundPaint = new Paint();
         mRoundBackGroundPaint.setColor(mCircleBgColor);

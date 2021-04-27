@@ -30,32 +30,6 @@ public class CirclePic2 extends View {
         mBitmapHeight = mBitmap.getHeight();
     }
 
-    /*@Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-        BitmapShader bitmapShader = new BitmapShader(mBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-        //图片的宽和高不同，将长边缩短，或者将短边缩长.本套代码选择将短边缩长
-        Matrix matrix = new Matrix();
-        bitmapShader.setLocalMatrix(matrix);
-        int min = Math.min(mBitmapWidth,mBitmapHeight);
-        float scale = 0.0f;
-        if (min == mBitmapWidth){
-            scale = (float) mBitmapHeight/min;
-            matrix.setScale(scale,1.0f);
-        }else {
-            scale = (float) mBitmapWidth/min;
-            matrix.setScale(1.0f,scale);
-        }
-
-        int width = getWidth();
-        int height = getHeight();
-        int min1 = Math.min(width,height);
-        ShapeDrawable shapeDrawable = new ShapeDrawable(new OvalShape());
-        shapeDrawable.getPaint().setShader(bitmapShader);
-        shapeDrawable.setBounds(0,0, min1 ,min1);
-        shapeDrawable.draw(canvas);
-    }*/
-
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);

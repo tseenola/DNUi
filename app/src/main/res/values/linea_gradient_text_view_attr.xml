@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="LinearGradientTextView">
+        <!--跑马灯效果的宽度，单位（字体个数）-->
+        <attr name="Gradient_Size" format="integer"></attr>
+        <!--跑马灯速度，单位（毫秒）,越小越快-->
+        <attr name="Speed" format="integer"></attr>
+        <!--跑马灯开始颜色-->
+        <attr name="Start_Color" format="color"></attr>
+        <!--跑马灯中间颜色-->
+        <attr name="Center_Color" format="color"></attr>
+        <!--跑马灯末位颜色-->
+        <attr name="End_Color" format="color"></attr>
+        <!--对应android.graphics.TileMode【CLAMP，REPEAT，MIRROR】-->
+        <attr name="TileModes" format="string"></attr>
+
+    </declare-styleable>
+</resources>

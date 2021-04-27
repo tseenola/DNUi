@@ -1,11 +1,15 @@
 package com.tenseenola.dnui.lsn4;
 
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 
 /**
@@ -19,6 +23,7 @@ public class ArrowMenue extends View {
     protected int mPerWith;//每一份宽度多少
     protected int mPerHeight;//每一份高度多少
     protected Paint mPaint;
+    private int mProgress;
 
     public ArrowMenue(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -31,25 +36,41 @@ public class ArrowMenue extends View {
         mPerHeight = getHeight()/heightCount;
         mPaint = new Paint();
         mPaint.setColor(Color.RED);
+        mPaint.setStrokeWidth(10);
     }
+
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        //画最上面一条线
-        drawTopLine(canvas);
         //画中间一条线
         drawCenterLine(canvas);
+        //画最上面一条线
+        drawTopLine(canvas);
         //画下面一条线
         drawBottom(canvas);
     }
 
 
-    /**
+    /**S
      * @param canvas
      */
     private void drawTopLine(Canvas canvas) {
-        canvas.drawLine(mPerWith ,mPerHeight,mPerWith*2,mPerHeight,mPaint);
+        if (mProgress<=100){
+            //顺时针旋转
+            canvas.save();
+            canvas.rotate( mProgress/100f*150,mPerWith*2,mPerHeight);
+            canvas.drawLine(mPerWith ,mPerHeight,mPerWith*2,mPerHeight,mPaint);
+            canvas.restore();
+        }else {
+            canvas.save();
+            float rat = (mProgress-100)/100f;
+            float transX = -mPerWith * rat;
+            float transY =  mPerHeight * rat;
+            canvas.translate(transX, transY) ;
+            canvas.drawLine(mPerWith*2,mPerHeight*1,mPerWith*3 ,0,mPaint);
+            canvas.restore();
+        }
     }
 
     /**
@@ -63,6 +84,47 @@ public class ArrowMenue extends View {
      * @param canvas
      */
     private void drawBottom(Canvas canvas) {
-        canvas.drawLine(mPerWith,mPerHeight*3,mPerWith*2,mPerHeight*3,mPaint);
+        if (mProgress <=100) {
+            //逆时针旋转
+            canvas.save();
+            canvas.rotate(-mProgress/100f*150,mPerWith*2,mPerHeight*3);
+            canvas.drawLine(mPerWith,mPerHeight*3,mPerWith*2,mPerHeight*3,mPaint);
+            canvas.restore();
+        }else {
+            canvas.save();
+            float rat = (mProgress-100)/100f;
+            float transX = -mPerWith * rat;
+            float transY = -mPerHeight * rat;
+            canvas.translate(transX,transY);
+            canvas.drawLine(mPerWith*2,mPerHeight*3,mPerWith*3 ,mPerHeight*4,mPaint);
+            canvas.restore();
+        }
+    }
+
+
+    public void open(){
+        ValueAnimator lValueAnimator = ValueAnimator.ofInt(0, 200);
+        lValueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                mProgress = (int) animation.getAnimatedValue();
+                postInvalidate();
+            }
+        });
+        lValueAnimator.setDuration(3*1000);
+        lValueAnimator.start();
+    }
+
+    public void close(){
+        ValueAnimator lValueAnimator = ValueAnimator.ofInt(200, 0);
+        lValueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                mProgress = (int) animation.getAnimatedValue();
+                postInvalidate();
+            }
+        });
+        lValueAnimator.setDuration(3*1000);
+        lValueAnimator.start();
     }
 }

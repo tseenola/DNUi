@@ -4,16 +4,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#aa000000"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
     <!--<com.tenseenola.dnui.lsn4.CirclePic2
-        android:layout_width="400dp"
-        android:layout_height="400dp">
+        android:layout_width="200dp"
+        android:layout_height="200dp">
     </com.tenseenola.dnui.lsn4.CirclePic2>-->
 
     <com.tenseenola.dnui.lsn4.ArrowMenue
-        android:layout_width="100dp"
-        android:layout_height="100dp"/>
+        android:id="@+id/amMenu"
+        android:layout_width="300dp"
+        android:layout_height="300dp"/>
 
+    <com.tenseenola.dnui.lsn4.LinearGradientTextView
+        android:layout_width="wrap_content"
+        android:textSize="20sp"
+        android:text="优博讯领跑行业移动应用"
+        android:layout_height="wrap_content"
+        app:Gradient_Size="4"
+        app:Speed="150"
+        app:Start_Color="#22ffffff"
+        app:Center_Color="#ffffffff"
+        app:End_Color="#22ffffff"
+        app:TileModes="CLAMP">
+    </com.tenseenola.dnui.lsn4.LinearGradientTextView>
+
+
+    <Button
+        android:id="@+id/btOpen"
+        android:text="打开"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <Button
+        android:id="@+id/btClose"
+        android:text="关闭"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>
