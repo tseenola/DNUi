@@ -7,9 +7,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <com.tenseenola.dnui.lsn4.CirclePic2
+    <!--<com.tenseenola.dnui.lsn4.CirclePic2
         android:layout_width="400dp"
         android:layout_height="400dp">
-    </com.tenseenola.dnui.lsn4.CirclePic2>
+    </com.tenseenola.dnui.lsn4.CirclePic2>-->
+
+    <com.tenseenola.dnui.lsn4.ArrowMenue
+        android:layout_width="100dp"
+        android:layout_height="100dp"/>
 
 </LinearLayout>
