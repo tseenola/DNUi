@@ -6,11 +6,14 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.annotation.Nullable;
+import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.AccelerateInterpolator;
 
 /**
  * Created by lenovo on 2021/4/27.
@@ -111,7 +114,8 @@ public class ArrowMenue extends View {
                 postInvalidate();
             }
         });
-        lValueAnimator.setDuration(3*1000);
+        lValueAnimator.setInterpolator(new FastOutSlowInInterpolator());
+        lValueAnimator.setDuration(2*1000);
         lValueAnimator.start();
     }
 
@@ -124,7 +128,8 @@ public class ArrowMenue extends View {
                 postInvalidate();
             }
         });
-        lValueAnimator.setDuration(3*1000);
+        lValueAnimator.setInterpolator(new FastOutSlowInInterpolator());
+        lValueAnimator.setDuration(2*1000);
         lValueAnimator.start();
     }
 }
