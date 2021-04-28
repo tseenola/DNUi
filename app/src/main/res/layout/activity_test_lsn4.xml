@@ -16,6 +16,9 @@
     <com.tenseenola.dnui.lsn4.ArrowMenue
         android:id="@+id/amMenu"
         android:layout_width="300dp"
+        app:arrow_animator_time="2000"
+        app:arrow_color="@color/white"
+        app:arrow_stroke_width="5"
         android:layout_height="300dp"/>
 
     <com.tenseenola.dnui.lsn4.LinearGradientTextView

@@ -2,18 +2,16 @@ package com.tenseenola.dnui.lsn4;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.annotation.Nullable;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.AccelerateInterpolator;
+
+import com.tenseenola.dnui.R;
 
 /**
  * Created by lenovo on 2021/4/27.
@@ -21,6 +19,9 @@ import android.view.animation.AccelerateInterpolator;
  *
  */
 public class ArrowMenue extends View {
+    protected int mStokeWidth;
+    protected int mArrowTime;
+    protected int mArrColor;
     protected int withCount = 3;//宽度被划分为多少份
     protected int heightCount =4;//高度被划分为多少份
     protected int mPerWith;//每一份宽度多少
@@ -30,6 +31,10 @@ public class ArrowMenue extends View {
 
     public ArrowMenue(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        TypedArray lTypedArray = context.obtainStyledAttributes(attrs, R.styleable.arrow);
+        mArrColor = lTypedArray.getColor(R.styleable.arrow_arrow_color, Color.RED);
+        mArrowTime = lTypedArray.getInteger(R.styleable.arrow_arrow_animator_time, 3 * 1000);
+        mStokeWidth = lTypedArray.getInteger(R.styleable.arrow_arrow_stroke_width,5);
     }
 
     @Override
@@ -38,8 +43,8 @@ public class ArrowMenue extends View {
         mPerWith = getWidth()/withCount;
         mPerHeight = getHeight()/heightCount;
         mPaint = new Paint();
-        mPaint.setColor(Color.RED);
-        mPaint.setStrokeWidth(10);
+        mPaint.setColor(mArrColor);
+        mPaint.setStrokeWidth(mStokeWidth);
     }
 
 
@@ -115,7 +120,7 @@ public class ArrowMenue extends View {
             }
         });
         lValueAnimator.setInterpolator(new FastOutSlowInInterpolator());
-        lValueAnimator.setDuration(2*1000);
+        lValueAnimator.setDuration(mArrowTime);
         lValueAnimator.start();
     }
 
@@ -129,7 +134,7 @@ public class ArrowMenue extends View {
             }
         });
         lValueAnimator.setInterpolator(new FastOutSlowInInterpolator());
-        lValueAnimator.setDuration(2*1000);
+        lValueAnimator.setDuration(mArrowTime);
         lValueAnimator.start();
     }
 }
