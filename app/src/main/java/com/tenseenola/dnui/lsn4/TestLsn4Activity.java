@@ -1,14 +1,13 @@
 package com.tenseenola.dnui.lsn4;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
 import com.tenseenola.dnui.R;
+import com.tseenola.commonui.ArrowMenue;
 
 public class TestLsn4Activity extends AppCompatActivity implements View.OnClickListener {
     private Button btOpen;

@@ -13,7 +13,7 @@
         android:layout_height="200dp">
     </com.tenseenola.dnui.lsn4.CirclePic2>-->
 
-    <com.tenseenola.dnui.lsn4.ArrowMenue
+    <com.tseenola.commonui.ArrowMenue
         android:id="@+id/amMenu"
         android:layout_width="300dp"
         app:arrow_animator_time="2000"

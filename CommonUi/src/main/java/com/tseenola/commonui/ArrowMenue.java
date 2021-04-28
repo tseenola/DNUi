@@ -1,4 +1,4 @@
-package com.tenseenola.dnui.lsn4;
+package com.tseenola.commonui;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -10,8 +10,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.util.AttributeSet;
 import android.view.View;
-
-import com.tenseenola.dnui.R;
 
 /**
  * Created by lenovo on 2021/4/27.
