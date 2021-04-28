@@ -7,9 +7,11 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.annotation.Nullable;
-import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.animation.LinearInterpolator;
+
+import java.lang.reflect.Field;
 
 /**
  * Created by lenovo on 2021/4/27.
@@ -25,7 +27,8 @@ public class ArrowMenue extends View {
     protected int mPerWith;//每一份宽度多少
     protected int mPerHeight;//每一份高度多少
     protected Paint mPaint;
-    private int mProgress;
+    protected int mProgress;
+    protected ValueAnimator mValueAnimator;
 
     public ArrowMenue(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -33,6 +36,29 @@ public class ArrowMenue extends View {
         mArrColor = lTypedArray.getColor(R.styleable.arrow_arrow_color, Color.RED);
         mArrowTime = lTypedArray.getInteger(R.styleable.arrow_arrow_animator_time, 3 * 1000);
         mStokeWidth = lTypedArray.getInteger(R.styleable.arrow_arrow_stroke_width,5);
+
+        initAnimator();
+    }
+
+    private void initAnimator() {
+        mValueAnimator = ValueAnimator.ofInt(0, 200);
+        mValueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                mProgress = (int) animation.getAnimatedValue();
+                postInvalidate();
+            }
+        });
+        Field field = null;
+        try {
+            field = ValueAnimator.class.getDeclaredField("sDurationScale");
+            field.setAccessible(true);
+            field.setFloat(null, 1);
+        } catch ( Exception pE) {
+            pE.printStackTrace();
+        }
+        mValueAnimator.setDuration(mArrowTime);
+        mValueAnimator.setInterpolator(new LinearInterpolator());
     }
 
     @Override
@@ -109,30 +135,16 @@ public class ArrowMenue extends View {
 
 
     public void open(){
-        ValueAnimator lValueAnimator = ValueAnimator.ofInt(0, 200);
-        lValueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                mProgress = (int) animation.getAnimatedValue();
-                postInvalidate();
-            }
-        });
-        lValueAnimator.setInterpolator(new FastOutSlowInInterpolator());
-        lValueAnimator.setDuration(mArrowTime);
-        lValueAnimator.start();
+        if (mValueAnimator.isRunning()) {
+            mValueAnimator.end();
+        }
+        mValueAnimator.start();
     }
 
     public void close(){
-        ValueAnimator lValueAnimator = ValueAnimator.ofInt(200, 0);
-        lValueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                mProgress = (int) animation.getAnimatedValue();
-                postInvalidate();
-            }
-        });
-        lValueAnimator.setInterpolator(new FastOutSlowInInterpolator());
-        lValueAnimator.setDuration(mArrowTime);
-        lValueAnimator.start();
+        if (mValueAnimator.isRunning()) {
+            mValueAnimator.end();
+        }
+        mValueAnimator.reverse();
     }
 }
