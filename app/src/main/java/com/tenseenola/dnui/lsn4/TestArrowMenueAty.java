@@ -9,7 +9,7 @@ import android.widget.Button;
 import com.tenseenola.dnui.R;
 import com.tseenola.commonui.ArrowMenue;
 
-public class TestLsn4Activity extends AppCompatActivity implements View.OnClickListener {
+public class TestArrowMenueAty extends AppCompatActivity implements View.OnClickListener {
     private Button btOpen;
     private ArrowMenue mViewById;
     private Button btClose;
@@ -17,7 +17,7 @@ public class TestLsn4Activity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test_lsn4);
+        setContentView(R.layout.activity_test_arrow_menue);
         mViewById = findViewById(R.id.amMenu);
         btOpen = findViewById(R.id.btOpen);
         btClose = findViewById(R.id.btClose);

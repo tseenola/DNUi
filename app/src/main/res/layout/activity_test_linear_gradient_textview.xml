@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/black"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+   <!-- android:background="#aa000000"-->
+    <com.tseenola.commonui.LinearGradientTextView
+        android:layout_width="wrap_content"
+        android:textSize="20sp"
+        android:text="优博讯领跑行业移动应用"
+        android:layout_height="wrap_content"
+        app:Gradient_Size="2"
+        app:Speed="150"
+        android:textColor="@color/white"
+        app:Start_Color="#ffffff"
+        app:Center_Color="#ff892f1b"
+        app:End_Color="#ffffff"
+        app:TileModes="CLAMP">
+    </com.tseenola.commonui.LinearGradientTextView>
+
+    <TextView
+        android:text="asdfasdfasdfasdfasdfasdfasfd"
+        android:layout_width="match_parent"
+        android:textColor="@color/white"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

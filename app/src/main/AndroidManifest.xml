@@ -25,13 +25,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>-->
         </activity>
-        <activity android:name=".lsn4.TestLsn4Activity">
+        <activity android:name=".lsn4.TestArrowMenueAty">
+           <!-- <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity>
+
+        <activity android:name=".lsn4.TestLinearGradientTextViewAty">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".lsn9.TestLsn9Aty">
            <!-- <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
