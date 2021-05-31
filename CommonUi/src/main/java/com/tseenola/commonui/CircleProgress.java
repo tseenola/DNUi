@@ -85,6 +85,10 @@ public class CircleProgress extends View {
         mTextPaint.setTextSize(mTextSize);
     }
 
+    public void setProgressMax(int pProgressMax){
+        mProgressMax = pProgressMax;
+    }
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
