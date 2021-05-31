@@ -13,6 +13,7 @@
         <attr name="End_Color" format="color"></attr>
         <!--对应android.graphics.TileMode【CLAMP，REPEAT，MIRROR】-->
         <attr name="TileModes" format="string"></attr>
-
+        <!--跑马灯开始方位，left从左边开始，right 从右边开始-->
+        <attr name="StartDirection" format="string"></attr>
     </declare-styleable>
 </resources>

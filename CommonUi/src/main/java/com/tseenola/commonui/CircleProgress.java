@@ -1,4 +1,4 @@
-package com.tenseenola.dnui.lsn3;
+package com.tseenola.commonui;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -11,11 +11,6 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.tenseenola.dnui.R;
-
-/**
- * 圆形进度条
- */
 public class CircleProgress extends View {
     private String mFinishText;
     private float radius;

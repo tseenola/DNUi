@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 public class LinearGradientTextView extends TextView {
     public static final String TAG ="LinearGradientTextView";
+    private  String mStartDirection;
     private  String mTitleModeStr;
     private  int mgradientEndColo;
     private  int mgradientCenterColor;
@@ -41,6 +42,8 @@ public class LinearGradientTextView extends TextView {
         mgradientCenterColor = typedArray.getColor(R.styleable.LinearGradientTextView_Center_Color, Color.parseColor("#ffffffff"));
         mgradientEndColo = typedArray.getColor(R.styleable.LinearGradientTextView_End_Color, Color.parseColor("#22ffffff"));
         mTitleModeStr = typedArray.getString(R.styleable.LinearGradientTextView_TileModes);
+        mStartDirection = typedArray.getString(R.styleable.LinearGradientTextView_StartDirection);
+
         typedArray.recycle();
         mTileMode = Shader.TileMode.CLAMP;
         if (mTitleModeStr == null) {

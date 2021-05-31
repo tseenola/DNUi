@@ -8,8 +8,9 @@
 
     <com.tenseenola.dnui.lsn3.CircleProgress
         android:id="@+id/CircleProgress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="200dp"
+        app:radius="80dp"
+        android:layout_height="200dp">
     </com.tenseenola.dnui.lsn3.CircleProgress>
 
 </LinearLayout>

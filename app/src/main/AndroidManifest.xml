@@ -19,11 +19,11 @@
             </intent-filter>-->
         </activity>
         <activity android:name=".lsn3.TestLsn3Activity">
-            <!--<intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
         </activity>
         <activity android:name=".lsn4.TestArrowMenueAty">
            <!-- <intent-filter>
@@ -34,11 +34,11 @@
         </activity>
 
         <activity android:name=".lsn4.TestLinearGradientTextViewAty">
-            <intent-filter>
+           <!-- <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
 
         <activity android:name=".lsn9.TestLsn9Aty">
